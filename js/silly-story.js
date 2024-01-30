@@ -57,6 +57,7 @@ function result() {
     newStory = newStory.replace(":insertZ:",zItem);
     newStory = newStory.replace(":insertX:",xItem);
 
+
     /* STEP 10: If the user has typed a name in the customName field, replace the name 'Bob' in the story with whatever they typed */
     if (customName.value !== "") { // Corrected to use value property
         // Replace 'Bob' with customName in the story
