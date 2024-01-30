@@ -46,6 +46,7 @@ function result() {
     var xItem = randomValueFromArray(insertX);
     var yItem = randomValueFromArray(insertY);
     var zItem = randomValueFromArray(insertZ);
+    var wItem = randomValueFromArray(insertX);
 
     /* STEP 9: Replace the three placeholders in the newStory 
     string — :insertX:, :insertY:, and :insertZ: — with the strings stored in 
@@ -55,6 +56,7 @@ function result() {
     newStory = newStory.replace(":insertX:",xItem);
     newStory = newStory.replace(":insertY:",yItem);
     newStory = newStory.replace(":insertZ:",zItem);
+    newStory = newStory.replace(":insertX:",wItem);
 
     /* STEP 10: If the user has typed a name in the customName field, replace the name 'Bob' in the story with whatever they typed */
     if (customName.value !== "") { // Corrected to use value property
@@ -84,48 +86,3 @@ so that when the button it represents is clicked, the result() function is run. 
         randomize.addEventListener("click", result);
 });
 // This lab based on the excellent assessment challenge at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Silly_story_generator
-
-document.addEventListener("DOMContentLoaded", function() {
-    var customName = document.getElementById("customname");
-    var randomize = document.getElementById("randomize");
-    var storyParagraph = document.querySelector(".story"); // Changed to use querySelector for class "story"
-
-    var storyText = "It was 94 fahrenheit outside, so :insertX: went for a walk. When they got to :insertY:, they stared in horror for a few moments, then :insertZ:. Bob saw the whole thing, but he was not surprised — :insertX: weighs 300 pounds, and it was a hot day.";
-
-    var insertX = ["Donald Trump", "Jackie Chan", "Santa Claus"]; 
-    var insertY = ["Area 51", "Death Valley", "Aruba"];
-    var insertZ = ["spontaneously combusted", "rapidly sublimated", "evaporated instantly"];
-
-    function randomValueFromArray(array) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    function result() {
-        var newStory = storyText;
-        
-        var xItem = randomValueFromArray(insertX);
-        var yItem = randomValueFromArray(insertY);
-        var zItem = randomValueFromArray(insertZ);
-
-        newStory = newStory.replace(":insertX:", xItem);
-        newStory = newStory.replace(":insertY:", yItem);
-        newStory = newStory.replace(":insertZ:", zItem);
-
-        if (customName.value !== "") {
-            newStory = newStory.replace(/Bob/g, customName.value);
-        }
-
-        if (document.getElementById("metric").checked) {
-            var weight = (300 * 0.453592).toFixed(2);
-            newStory = newStory.replace("300 pounds", weight + " kg");
-            
-            var temp = ((94 - 32) * 5/9).toFixed(2);
-            newStory = newStory.replace("94 fahrenheit", temp + " Celsius");
-        }
-
-        storyParagraph.textContent = newStory;
-        storyParagraph.style.visibility = "visible";
-    }
-
-    randomize.addEventListener("click", result);
-});
