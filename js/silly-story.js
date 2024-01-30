@@ -46,7 +46,6 @@ function result() {
     var xItem = randomValueFromArray(insertX);
     var yItem = randomValueFromArray(insertY);
     var zItem = randomValueFromArray(insertZ);
-    var wItem = randomValueFromArray(insertX);
 
     /* STEP 9: Replace the three placeholders in the newStory 
     string — :insertX:, :insertY:, and :insertZ: — with the strings stored in 
@@ -56,7 +55,7 @@ function result() {
     newStory = newStory.replace(":insertX:",xItem);
     newStory = newStory.replace(":insertY:",yItem);
     newStory = newStory.replace(":insertZ:",zItem);
-    newStory = newStory.replace(":insertX:",wItem);
+    newStory = newStory.replace(":insertX:",xItem);
 
     /* STEP 10: If the user has typed a name in the customName field, replace the name 'Bob' in the story with whatever they typed */
     if (customName.value !== "") { // Corrected to use value property
